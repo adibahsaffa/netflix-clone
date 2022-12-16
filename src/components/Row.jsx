@@ -9,9 +9,9 @@ const Row = ({ title, fetchURL, rowID }) => {
 
     useEffect(() => {
         axios.get(fetchURL).then((response) => {
-            setMovies(response.data.results)
-        })
-    }, [fetchURL])
+            setMovies(response.data.results);
+        });
+    }, [fetchURL]);
 
     const slideLeft = () => {
         var slider = document.getElementById('slider' + rowID);
@@ -37,12 +37,9 @@ const Row = ({ title, fetchURL, rowID }) => {
                 <div
                     id={'slider' + rowID}
                     className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative'>
-                    {movies.map((item, id) => {
-                        <Movie
-                            key={id}
-                            item={item}
-                        />
-                    })}
+                    {movies.map((item, id) => (
+                        <Movie key={id} item={item} />
+                    ))}
                 </div>
                 <MdChevronRight
                     onClick={slideRight}
